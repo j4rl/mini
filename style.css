@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    position: relative;
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: calc(100vh);
+    background: rgb(255, 255, 249);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+details>summary {
+    list-style-type: none;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+details>summary::before {
+    content: '➕';
+    padding: 3px;
+}
+
+details[open]>summary::before {
+    padding: 3px;
+    content: '➖';
+}
+
+details {
+    margin: 0.5rem;
+    transition: all .2s ease-in-out;
+}
+
+details[open] {
+    background: rgb(226, 228, 231);
+    padding-bottom: 1rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 0px solid rgba(0, 0, 0, 0);
+    border-right: 0px solid rgba(0, 0, 0, 0);
+    border-bottom: 0px solid rgba(0, 0, 0, 0);
+}
+
+details[open]>summary {
+    margin-bottom: 0.5rem;
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.txtBox {
+    padding: 1rem;
+}
+
+summary {
+    border-top: 1px solid rgba(0, 0, 0, 0.001);
+    border-right: 1px solid rgba(0, 0, 0, 0.001);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.001);
+    background: rgb(228, 237, 248);
+    padding-bottom: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    --outline: 1px solid red;
+}
+
+h1 {
+    font-family: sans-serif;
+    letter-spacing: .1rem;
+    color: rgb(99, 129, 177);
+}
+
+.ingress {
+    font-weight: bold;
+}
+
+.text {
+    color: #222;
+}
+
+.byline {
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 100%;
+    margin-top: .1rem;
+    padding: .3rem;
+    background: rgb(99, 129, 177);
+    color: white;
+    text-align: right;
+}
