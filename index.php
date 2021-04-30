@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php require_once('func.php'); ?>
+<?php 
+    $db=new db('dbsdata');
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,12 +14,15 @@
 </head>
 <body>
     <div class="content">
+    <?php     if(isset($_POST['login'])){
+        echo checklogin($_POST['username'],$_POST['password'], $db);
+    }else{ ?>
     <form method="post" action="index.php" name="frmLogin" autocomplete="off">
         <input type="text" name="username" placeholder="Användarnamn" required autocomplete="off">
-        <input type="password" onblur="this.setAttribute('readonly', 'readonly');" onfocus="this.removeAttribute('readonly');" readonly name="password" required autocomplete="off">
-        <button type="submit" name="login">Logga in</button>
+        <input type="password" onblur="this.setAttribute('readonly', 'readonly');" onfocus="this.removeAttribute('readonly');" readonly name="password" required autocomplete="off" placeholder="Lösenord">
+        <button type="submit" name="login" value=".">Logga in</button>
     </form>
-
+<?php } ?>
     <?php for($vdo=0;$vdo<3;$vdo++){ ?>
         <section>
             <h1>Lorem, ipsum.</h1>
@@ -30,7 +37,7 @@
             <div class="txtBox">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis quo fugiat vel.</div>
             
         </details>
-<?php } ?>
+<?php }  ?>
 
     </div>
 </body>
