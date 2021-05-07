@@ -16,8 +16,8 @@ function runQuery($conntmp, $sqlStr){
     }else{
         return false;
     };
-
 }
+
 
 
 /* $host="localhost";
