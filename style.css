@@ -96,3 +96,33 @@ h1 {
     color: white;
     text-align: right;
 }
+
+form[name='frmLogin']{
+    display:grid;
+    grid-template-areas: "a b" "c b";
+    width:15rem;
+    float: right;
+}
+input{
+    height:1.3rem;
+    padding: .2rem;
+    width:100%;
+}
+input[name='username']{
+    grid-area: a;
+}
+input[name='password']{
+    grid-area:c;
+}
+button{
+    width:100%;
+    height:100%;
+    grid-area: b;
+}
+.icon{
+    height:16px;
+}
+a:hover :is(.icon) {
+    background:rgb(214, 144, 144);
+    border-radius: 8px;
+}
