@@ -1,11 +1,10 @@
 <?php
 
 //Connect to db
-function connect(){
+function connect($db){
     $host="localhost";
     $user="root";
     $pass="";
-    $db="";
     $conn=mysqli_connect($host,$user,$pass,$db) or die(mysqli_error);    
     return $conn;
 }
