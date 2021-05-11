@@ -119,3 +119,10 @@ button{
     height:100%;
     grid-area: b;
 }
+.icon{
+    height:16px;
+}
+a:hover :is(.icon) {
+    background:rgb(214, 144, 144);
+    border-radius: 8px;
+}

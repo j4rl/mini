@@ -27,7 +27,7 @@
         $result=mysqli_query($conn, $sql);
     }
 
-    if(isset($_POST['btnEditSubmit'])){
+    if(isset($_POST['btnEditUser'])){
         $editid=$_POST['userID'];
         $txtUsername=$_POST['txtUsername'];
         $txtPassHash=md5($_POST['txtPassword']);
@@ -60,11 +60,11 @@
         <input type="text" name="txtPassword" id="txtPassword" value="<?=$row['password'];?>" autocomplete="off">
         <input type="text" name="txtUserlevel" id="txtUserlevel" value="<?=$row['userlevel'];?>" autocomplete="off">
         <input type="hidden" name="userID" value="<?=$row['userID']?>">
-        <button type="submit" name="btnEditSubmit" value=".">Ändra!</button>
+        <button type="submit" name="btnEditUser" value=".">Ändra!</button>
     </form>
 <?php }else{ ?>    
     <form method="post" action="usadmin.php">
-        <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="Your name">
+        <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="Full name">
         <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="Username">
         <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="Password">
         <label for="lstUserlevel">User level:</label>
@@ -79,10 +79,10 @@
     <div class="ruta">
     <?php 
         //-------------------Get all data from table, and print it
-        $sql="SELECT * FROM tblText";
+        $sql="SELECT * FROM tbluser";
         $result=mysqli_query($conn, $sql);
         while($row=mysqli_fetch_assoc($result)){
-            echo $row['realname']."&nbsp;&nbsp;[".$row['username']."]<a href='usadmin.php?del=".$row['userID']."'>X</a><a href='usadmin.php?edit=".$row['userID']."'>/</a><br>";
+            echo $row['realname']."&nbsp;&nbsp;[".$row['username']."]<a href='usadmin.php?del=".$row['userID']."'><img class='icon' src='icons/del.png'></a><a href='usadmin.php?edit=".$row['userID']."'><img class='icon' src='icons/edit.png'></a><br>";
         }
         //--------------------------------------------------------
     ?>
