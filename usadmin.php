@@ -54,6 +54,21 @@
     <div class="userinfo">
         <?=showLoginStatus()?>
     </div>
+    <nav id='menu'>
+  <input type='checkbox' id='responsive-menu'><label></label>
+  <ul>
+    <li><a href='index.php'>Home</a></li>
+    <?php if(isLevel(100)){ ?>
+    <li><a>Admin</a>
+      <ul class='sub-menus'>
+        <li><a href='usadmin.php'>Users</a></li>
+        <li><a href='bladmin.php'>Blogg</a></li>
+      </ul>
+    </li>
+    <?php } ?>
+    <li><a href='about.php'>About</a></li>
+  </ul>
+</nav>
 <?php  if(isset($_GET['edit'])){ 
         $editid=$_GET["edit"];
         $sql="SELECT * FROM `tbluser` WHERE userID=$editid";
@@ -79,13 +94,13 @@
         <label for="lstUserlevel">User level:</label>
             <select id="lstUserlevel" name="lstUserlevel" size="3">
                 <option value="10" selected>User</option>
-                <option value="100">Extended</option>
-                <option value="1000">Admin</option>
+                <?php if(isLevel(110)){ ?><option value="100">Extended</option><?php } ?>
+                    <?php if(isLevel(1000)){ ?><option value="1000">Admin</option><?php } ?>
             </select>
         <button type="submit" name="btnNewUser" value=".">Add&nbsp;user!</button>
     </form></details> <?php } ?>
 <?php } ?>    
-
+<?php if(isLevel(100)){ ?>
     <div class="ruta">
     <?php 
         //-------------------Get all data from table, and print it
@@ -101,7 +116,7 @@
        <?php }
         //--------------------------------------------------------
     ?>
-    </div>
+    </div><?php } ?>
     
 </body>
 </html>
