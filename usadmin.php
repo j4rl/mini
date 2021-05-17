@@ -51,6 +51,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="userinfo">
+        <?=$_SESSION['username']?>
+    </div>
 <?php  if(isset($_GET['edit'])){ 
         $editid=$_GET["edit"];
         $sql="SELECT * FROM `tbluser` WHERE userID=$editid";
@@ -66,7 +69,7 @@
         <button type="submit" name="btnEditUser" value=".">Ändra!</button>
     </form>
 <?php }else{ ?> 
-
+    <?php if(isLevel(100)){ ?>
 <details>
 <summary>Add user</summary>      
     <form method="post" action="usadmin.php" name="usadmin">
@@ -80,7 +83,7 @@
                 <option value="1000">Admin</option>
             </select>
         <button type="submit" name="btnNewUser" value=".">Add&nbsp;user!</button>
-    </form></details> 
+    </form></details> <?php } ?>
 <?php } ?>    
 
     <div class="ruta">

@@ -61,7 +61,21 @@ function isLevel($lvl){
     }
 }
 
-
+function getUsername($id){
+    if(isset($id)){
+        $tempDB=new db('dbsdata');
+        $sql="SELECT * FROM tblUser WHERE id=$id";
+        if($result=$tempDB->runQuery($sql)){ //Was it possible to question the database for this?
+            if(!mysqli_num_rows($result)==1){
+                return "Wrong id";
+             }else{
+                $raden=mysqli_fetch_assoc($result);
+                return $raden['realname'];
+             }
+    }else{
+        return "Error getting username"
+    }
+}
 
 class db {
     function __construct($db_name, $host="localhost", $username="root", $password="") {
