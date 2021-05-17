@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --outline: 1px solid red;
+}
+
+:root {
+    --formheight: 10%;
 }
 
 .content {
@@ -19,6 +24,9 @@
 
 details>summary {
     list-style-type: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 details>summary::-webkit-details-marker {
@@ -97,32 +105,122 @@ h1 {
     text-align: right;
 }
 
-form[name='frmLogin']{
-    display:grid;
+form[name='frmLogin'] {
+    display: grid;
     grid-template-areas: "a b" "c b";
-    width:15rem;
+    width: 18rem;
     float: right;
 }
-input{
-    height:1.3rem;
-    padding: .2rem;
-    width:100%;
+
+form[name='usadmin'] {
+    display: grid;
+    grid-template-areas: "a b" "c d" "e f";
+    max-width: 50%;
+    min-width: 25%;
+    padding: 1rem;
 }
-input[name='username']{
+
+form[name='usadmin']>input[name='txtUsername'] {
+    grid-area: c;
+}
+
+form[name='usadmin']>input[name='txtRealname'] {
     grid-area: a;
 }
-input[name='password']{
-    grid-area:c;
+
+form[name='usadmin']>input[name='txtPassword'] {
+    grid-area: e;
 }
-button{
-    width:100%;
-    height:100%;
+
+form[name='usadmin']>label {
+    width: 100%;
+    height: 100%;
+    text-indent: 1rem;
+    font-family: sans-serif;
+    font-size: 1.2rem;
     grid-area: b;
 }
-.icon{
-    height:16px;
+
+form[name='usadmin']>select {
+    grid-area: d;
+    border-radius: .2rem;
+    border: 1px solid #ddd;
 }
+
+form[name='usadmin']>button {
+    grid-area: f;
+    border-radius: .2rem;
+    border: 1px solid #ddd;
+}
+
+input {
+    padding: .4rem;
+    min-width: 200px;
+    max-width: 100%;
+    border-radius: .2rem;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+}
+
+form[name='frmLogin']>input[name='username'] {
+    grid-area: a;
+}
+
+form[name='frmLogin']>input[name='password'] {
+    grid-area: c;
+}
+
+form[name='frmLogin']>button {
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    grid-area: b;
+}
+
+.icon {
+    height: 16px;
+}
+
+.toolicon {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 3px;
+    width: 100%;
+    height: 20px;
+}
+
 a:hover :is(.icon) {
-    background:rgb(214, 144, 144);
+    background: rgb(214, 144, 144);
     border-radius: 8px;
+}
+
+.ruta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .2rem;
+    height: calc(100vh - var(--formheight));
+}
+
+.userbox {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 1rem;
+    background: rgb(211, 211, 211);
+}
+
+h3 {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.username {
+    width: 100%;
+    Font-weight: bold;
+}
+
+.level {
+    color: dodgerblue;
 }

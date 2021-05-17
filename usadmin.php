@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
     <?php
+    require_once 'func.php';
     //------------------------------Connect to database
     $host="localhost";
     $user="root";
@@ -13,7 +14,8 @@
     //---take data from textbox and put it in database
     if(isset($_POST['btnNewUser'])){
         $txtUsername=$_POST['txtUsername'];
-        $txtPassHash=md5($_POST['txtPassword']);
+        //$txtPassHash=md5($_POST['txtPassword']);
+        $txtPassHash=$_POST['txtPassword'];
         $intUserlevel=intval($_POST['lstUserlevel']);
         $txtRealname=$_POST['txtRealname'];
         $sql="INSERT INTO tbluser (username, password, userlevel, realname) VALUES ('$txtUsername', '$txtPassHash', $intUserlevel, '$txtRealname')";
@@ -30,7 +32,8 @@
     if(isset($_POST['btnEditUser'])){
         $editid=$_POST['userID'];
         $txtUsername=$_POST['txtUsername'];
-        $txtPassHash=md5($_POST['txtPassword']);
+        //$txtPassHash=md5($_POST['txtPassword']);
+        $txtPassHash=$_POST['txtPassword'];
         $intUserlevel=intval($_POST['txtUserlevel']);
         $txtRealname=$_POST['txtRealname'];
         $sql="UPDATE `tbluser` SET username='$txtUsername', password='$txtPassHash', userlevel=$intUserlevel, realname='$txtRealname' WHERE userID=$editid";
@@ -54,7 +57,7 @@
         $result=mysqli_query($conn, $sql);
         $row=mysqli_fetch_assoc($result);
     ?>
-    <form method="post" action="usadmin.php">
+    <form method="post" action="usadmin.php" name="usadmin">
         <input type="text" name="txtRealname" id="txtRealname" value="<?=$row['realname'];?>" autocomplete="off">
         <input type="text" name="txtUsername" id="txtUsername" value="<?=$row['username'];?>" autocomplete="off">
         <input type="text" name="txtPassword" id="txtPassword" value="<?=$row['password'];?>" autocomplete="off">
@@ -62,8 +65,11 @@
         <input type="hidden" name="userID" value="<?=$row['userID']?>">
         <button type="submit" name="btnEditUser" value=".">Ändra!</button>
     </form>
-<?php }else{ ?>    
-    <form method="post" action="usadmin.php">
+<?php }else{ ?> 
+
+<details>
+<summary>Add user</summary>      
+    <form method="post" action="usadmin.php" name="usadmin">
         <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="Full name">
         <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="Username">
         <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="Password">
@@ -74,20 +80,25 @@
                 <option value="1000">Admin</option>
             </select>
         <button type="submit" name="btnNewUser" value=".">Add&nbsp;user!</button>
-    </form>
+    </form></details> 
 <?php } ?>    
+
     <div class="ruta">
     <?php 
         //-------------------Get all data from table, and print it
         $sql="SELECT * FROM tbluser";
         $result=mysqli_query($conn, $sql);
-        while($row=mysqli_fetch_assoc($result)){
-            echo $row['realname']."&nbsp;&nbsp;[".$row['username']."]<a href='usadmin.php?del=".$row['userID']."'><img class='icon' src='icons/del.png'></a><a href='usadmin.php?edit=".$row['userID']."'><img class='icon' src='icons/edit.png'></a><br>";
-        }
+        while($row=mysqli_fetch_assoc($result)){ ?>
+            <div class="userbox">
+                <h3><?=$row['realname']?>&nbsp;&nbsp;[<span class="level"><?=$row['userlevel']?></span>]</h3>
+                <code class="username">[<?=$row['username']?>]</code>
+                <?php if(isLevel(100)){ ?><code class="password"><?=$row['password']?></code><?php } ?>
+                <?php if(isLevel(1000)){?><span class="toolicon"><a href='usadmin.php?del="<?=$row['userID']?>"'><img class='icon' src='icons/del.png'></a>&nbsp;&nbsp;<a href='usadmin.php?edit="<?=$row['userID']?>"'><img class='icon' src='icons/edit.png'></a></span><?php }?>
+            </div>
+       <?php }
         //--------------------------------------------------------
     ?>
     </div>
-
     
 </body>
 </html>
