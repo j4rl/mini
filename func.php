@@ -26,7 +26,8 @@ $pass="";
 $db="";
 $conn=mysqli_connect($host,$user,$pass,$db) or die(mysqli_error); */
 
-function checklogin($usr, $pass, $dbobj){
+function checklogin($usr, $pass){
+    $dbobj=new db('dbsdata');
     $strQuery="SELECT * FROM tblUser WHERE username='$usr' AND password='$pass';";  
     if($result=$dbobj->runQuery($strQuery)){ //Was it possible to question the database for this?
         if(!mysqli_num_rows($result)==1){   //It was, now check if it didn't was just one row

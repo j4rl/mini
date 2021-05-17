@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <?php require_once('func.php'); ?>
 <?php 
-    $db=new db('dbsdata');
+    $host="localhost";
+    $user="root";
+    $pass="";
+    $db ="dbsData";
+    $conn=mysqli_connect($host, $user, $pass, $db);
 
 ?>
 <html lang="en">
@@ -42,18 +46,28 @@
         <button type="submit" name="login" value=".">Logga in</button>
     </form><?php } ?>
 <?php } ?>
-    <?php for($vdo=0;$vdo<3;$vdo++){ ?>
+    <?php 
+    $sql="SELECT * FROM tblblog ORDER BY added DESC LIMIT 3";
+    $result=mysqli_query($conn, $sql);
+    while($row=mysqli_fetch_assoc($result)){ ?>
         <section>
-            <h1>Lorem, ipsum.</h1>
-            <p class="ingress">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam porro consequuntur architecto ipsa a praesentium!</p>
-            <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente numquam aliquid vitae libero odio molestiae minus consequatur voluptas fugiat consectetur, similique alias minima obcaecati incidunt sunt dolorum fugit unde, veniam accusantium. Itaque eveniet voluptates dolorem fuga, quam quos possimus vel officiis impedit, tenetur nemo iusto alias dicta eos, voluptas obcaecati.</p>
-            <div class="byline">- by Charlie Jarl</div>
+            <h1><?=$row['header']?></h1>
+            <p class="ingress"><?=$row['ingress']?></p>
+            <p class="text"><?=$row['text']?></p>
+            <div class="byline">- by <?=getRealName($row['author'])?></div>
         </section>
 <?php } ?>
-<?php for($vdo=0;$vdo<5;$vdo++){ ?>
+<?php 
+    $sql="SELECT * FROM tblblog ORDER BY added DESC LIMIT 3,10";
+    $result=mysqli_query($conn, $sql);
+    while($row=mysqli_fetch_assoc($result)){ ?>
     <details>
-            <summary>Exempel</summary>
-            <div class="txtBox">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis quo fugiat vel.</div>
+            <summary><?=$row['header']?></summary>
+            <div class="txtBox">
+            <p class="ingress"><?=$row['ingress']?></p>
+            <p class="text"><?=$row['text']?></p>
+            <div class="byline">- by <?=getRealName($row['author'])?></div>    
+            </div>
             
         </details>
 <?php }  ?>

@@ -125,7 +125,7 @@
     <div class="bladminruta">
     <?php 
         //-------------------Get all data from table, and print it
-        $sql="SELECT * FROM tblblog";
+        $sql="SELECT * FROM tblblog ORDER BY added DESC";
         $result=mysqli_query($conn, $sql);
         while($row=mysqli_fetch_assoc($result)){ ?>
         <details class="bladmindetails">
