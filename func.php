@@ -19,6 +19,7 @@ function runQuery($conntmp, $sqlStr){
 
 
 
+
 /* $host="localhost";
 $user="root";
 $pass="";
@@ -61,10 +62,10 @@ function isLevel($lvl){
     }
 }
 
-function getUsername($id){
+function getRealName($id){
     if(isset($id)){
         $tempDB=new db('dbsdata');
-        $sql="SELECT * FROM tblUser WHERE id=$id";
+        $sql="SELECT * FROM tblUser WHERE userID=$id";
         if($result=$tempDB->runQuery($sql)){ //Was it possible to question the database for this?
             if(!mysqli_num_rows($result)==1){
                 return "Wrong id";
@@ -72,8 +73,34 @@ function getUsername($id){
                 $raden=mysqli_fetch_assoc($result);
                 return $raden['realname'];
              }
+        }else{
+            return "Error getting username";
+        }
+    }
+}
+function showLoginStatus(){
+    $strRet="<div class='loginstatus'>";    
+    if(isLevel(10)){
+        $strRet=$strRet.getRealName($_SESSION['id'])."&nbsp;[".$_SESSION['name']."]&nbsp;".getlevel($_SESSION['level'])."&nbsp;&nbsp;<a href='logout.php' class='logstat'>Log&nbsp;out</a>";
     }else{
-        return "Error getting username"
+        $strRet=$strRet."Not logged in, please log in again.&nbsp;<a href='index.php' class='logstat'>Log&nbsp;in</a>";
+    }
+    return $strRet."</div>";
+}
+
+function getLevel($level){
+    switch($level){
+        case ($level >= 1000):
+            return "Admin";
+            break;
+        case ($level >= 100):
+            return "Extended user";
+            break;     
+        case ($level >= 10):
+            return "Normal user";
+            break;
+        default:
+            return "User level makes no sense!";
     }
 }
 

@@ -52,7 +52,7 @@
 </head>
 <body>
     <div class="userinfo">
-        <?=$_SESSION['username']?>
+        <?=showLoginStatus()?>
     </div>
 <?php  if(isset($_GET['edit'])){ 
         $editid=$_GET["edit"];
