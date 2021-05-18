@@ -11,7 +11,7 @@ function connect($db){
 }
 
 function runQuery($conntmp, $sqlStr){
-    if($result=mysql_query($conntmp,$sqlStr)){
+    if($result=mysqli_query($conntmp,$sqlStr)){
         return $result;
     }else{
         return false;
