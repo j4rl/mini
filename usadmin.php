@@ -44,7 +44,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Administrera användare</title>
+    <title><?=$strHomeTitle?></title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -54,21 +54,7 @@
     <div class="userinfo">
         <?=showLoginStatus()?>
     </div>
-    <nav id='menu'>
-  <input type='checkbox' id='responsive-menu'><label></label>
-  <ul>
-    <li><a href='index.php'>Home</a></li>
-    <?php if(isLevel(100)){ ?>
-    <li><a>Admin</a>
-      <ul class='sub-menus'>
-        <li><a href='usadmin.php'>Users</a></li>
-        <li><a href='bladmin.php'>Blogg</a></li>
-      </ul>
-    </li>
-    <?php } ?>
-    <li><a href='about.php'>About</a></li>
-  </ul>
-</nav>
+<?php require_once 'menu.php'; ?>
 <?php  if(isset($_GET['edit'])){ 
         $editid=$_GET["edit"];
         $sql="SELECT * FROM `tbluser` WHERE userID=$editid";
@@ -81,23 +67,23 @@
         <input type="text" name="txtPassword" id="txtPassword" value="<?=$row['password'];?>" autocomplete="off">
         <input type="text" name="txtUserlevel" id="txtUserlevel" value="<?=$row['userlevel'];?>" autocomplete="off">
         <input type="hidden" name="userID" value="<?=$row['userID']?>">
-        <button type="submit" name="btnEditUser" value=".">Ändra!</button>
+        <button type="submit" name="btnEditUser" value="."><?=$strBtnEditUser?></button>
     </form>
 <?php }else{ ?> 
     <?php if(isLevel(100)){ ?>
 <details>
-<summary>Add user</summary>      
+<summary><?=$strAddUser?></summary>      
     <form method="post" action="usadmin.php" name="usadmin">
-        <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="Full name">
-        <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="Username">
-        <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="Password">
-        <label for="lstUserlevel">User level:</label>
+        <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="<?=$placeholderRealname?>">
+        <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="<?=$placeholderUsername?>">
+        <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="<?=$placeholderPassword?>">
+        <label for="lstUserlevel"><?=$strUserLevel?></label>
             <select id="lstUserlevel" name="lstUserlevel" size="3">
-                <option value="10" selected>User</option>
-                <?php if(isLevel(110)){ ?><option value="100">Extended</option><?php } ?>
-                    <?php if(isLevel(1000)){ ?><option value="1000">Admin</option><?php } ?>
+                <option value="10" selected><?=$strUser?></option>
+                <?php if(isLevel(110)){ ?><option value="100"><?=$strExtended?></option><?php } ?>
+                    <?php if(isLevel(1000)){ ?><option value="1000"><?=$strAdmin?></option><?php } ?>
             </select>
-        <button type="submit" name="btnNewUser" value=".">Add&nbsp;user!</button>
+        <button type="submit" name="btnNewUser" value="."><?=$strBtnNewUser?></button>
     </form></details> <?php } ?>
 <?php } ?>    
 <?php if(isLevel(100)){ ?>

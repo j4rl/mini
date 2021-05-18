@@ -43,7 +43,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Administrera användare</title>
+    <title><?=$strHomeTitle?></title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -57,16 +57,16 @@
     <nav id='menu'>
   <input type='checkbox' id='responsive-menu'><label></label>
   <ul>
-    <li><a href='index.php'>Home</a></li>
+    <li><a href='index.php'><?=$strHome?></a></li>
     <?php if(isLevel(100)){ ?>
-    <li><a>Admin</a>
+    <li><a><?=$strAdmin?></a>
       <ul class='sub-menus'>
-        <li><a href='usadmin.php'>Users</a></li>
-        <li><a href='bladmin.php'>Blogg</a></li>
+        <li><a href='usadmin.php'><?=$strUserAdmin?></a></li>
+        <li><a href='bladmin.php'><?=$strBlogAdmin?></a></li>
       </ul>
     </li>
     <?php } ?>
-    <li><a href='about.php'>About</a></li>
+    <li><a href='about.php'><?=$strAbout?></a></li>
   </ul>
 </nav>
 <?php  if(isset($_GET['edit'])){ 
@@ -94,7 +94,7 @@
         <input type="text" name="txtAuthor" id="txtAuthor" value="<?=getRealName($row['author']);?>" autocomplete="off" readonly>
         <input type="text" name="txtAdded" id="txtAdded" value="<?=$row['added'];?>" autocomplete="off" readonly>
         <input type="hidden" name="blogID" value="<?=$row['blogID']?>">
-        <button type="submit" name="btnEditBlog" value=".">Ok</button>
+        <button type="submit" name="btnEditBlog" value="."><?=$strBtnEditBlog?></button>
     </div>
 
     </form>
@@ -103,7 +103,7 @@
 <details>
 <summary>Add blog</summary>      
     <form method="post" action="bladmin.php" name="bladmin">
-    <input type="text" name="txtHeader" id="txtHeader" required placeholder="Header" autocomplete="off">
+    <input type="text" name="txtHeader" id="txtHeader" required placeholder="<?=$placeholderHeader?>" autocomplete="off">
     <textarea name="txtIngress" rows="3"></textarea>
         <textarea name="txtText" id="txtNewText" rows="6"></textarea>
     <script>
@@ -117,7 +117,7 @@
       elementpath: false
    });
   </script>
-<div class="bladminBottomBox"><button type="submit" name="btnNewBlog" value=".">Add&nbsp;blog!</button></div>
+<div class="bladminBottomBox"><button type="submit" name="btnNewBlog" value="."><?=$strBtnNewBlog?></button></div>
         
     </form></details> <?php } ?>
 <?php } ?>    

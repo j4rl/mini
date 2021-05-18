@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once './lang/en.php';
 //Connect to db
 function connect($db){
     $host="localhost";
@@ -36,17 +37,17 @@ function checklogin($usr, $pass){
            $_SESSION['id']="";
            $_SESSION['level']="";
            $_SESSION['name']="";   
-           $mess="Inte inloggad";                
+           $mess=$strMessLoginFail;                
         }else{  //You made it! you are authorized!
             $raden=mysqli_fetch_assoc($result);   //Get the row with data
             //Now set all our session variables. You could have secret names for these session variables 
             $_SESSION['id']=$raden['userID'];
             $_SESSION['level']=$raden['userlevel'];
             $_SESSION['name']=$raden['username'];
-            $mess="Inloggad";
+            $mess=$strMessLoginSuccess;
         }
     }else{
-        $mess="Okänt fel";
+        $mess=$strMessUnknown;
     } 
     return $mess;
 }
@@ -69,39 +70,41 @@ function getRealName($id){
         $sql="SELECT * FROM tblUser WHERE userID=$id";
         if($result=$tempDB->runQuery($sql)){ //Was it possible to question the database for this?
             if(!mysqli_num_rows($result)==1){
-                return "Wrong id";
+                return $strMessWrongID;
              }else{
                 $raden=mysqli_fetch_assoc($result);
                 return $raden['realname'];
              }
         }else{
-            return "Error getting username";
+            return $strMessUsernameFail;
         }
     }
 }
 function showLoginStatus(){
+    global $strLogin, $strLogout,  $strMessDoLogin;
     $strRet="<div class='loginstatus'>";    
     if(isLevel(10)){
-        $strRet=$strRet.getRealName($_SESSION['id'])."&nbsp;[".$_SESSION['name']."]&nbsp;".getlevel($_SESSION['level'])."&nbsp;&nbsp;<a href='logout.php' class='logstat'>Log&nbsp;out</a>";
+        $strRet=$strRet.getRealName($_SESSION['id'])."&nbsp;[".$_SESSION['name']."]&nbsp;".getlevel($_SESSION['level'])."&nbsp;&nbsp;<a href='logout.php' class='logstat'>".$strLogout."</a>";
     }else{
-        $strRet=$strRet."Not logged in, please log in again.&nbsp;<a href='index.php' class='logstat'>Log&nbsp;in</a>";
+        $strRet=$strRet.$strMessDoLogin."&nbsp;<a href='index.php' class='logstat'>".$strLogin."</a>";
     }
     return $strRet."</div>";
 }
 
 function getLevel($level){
+    global $strAdmin, $strExtended, $strUser, $strErrUser;
     switch($level){
         case ($level >= 1000):
-            return "Admin";
+            return $strAdmin;
             break;
         case ($level >= 100):
-            return "Extended user";
+            return $strExtended;
             break;     
         case ($level >= 10):
-            return "Normal user";
+            return $strUser;
             break;
         default:
-            return "User level makes no sense!";
+            return $strErrUser;
     }
 }
 

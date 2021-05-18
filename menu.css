@@ -10,7 +10,7 @@
 #menu li {
     margin: 0 auto;
     padding: 0;
-    list-style: none
+    list-style: none;
 }
 
 #menu ul {
@@ -34,7 +34,7 @@
 }
 
 #menu a.dropdown-arrow:after {
-    content: "\25BE";
+    content: "\25BE"; /* Lilla fula pilen i menyn */
     margin-left: 5px;
 }
 
@@ -50,7 +50,7 @@
     height: 45px;
     width: 100%;
     opacity: 0;
-    cursor: pointer
+    cursor: pointer;
 }
 
 #menu label {
@@ -58,7 +58,7 @@
     line-height: 45px;
     text-align: center;
     position: absolute;
-    left: 35px
+    left: 35px;
 }
 
 #menu label:before {
@@ -88,7 +88,7 @@
 }
 
 #menu li:hover ul.sub-menus {
-    display: block
+    display: block;
 }
 
 #menu ul.sub-menus a:hover {
@@ -98,7 +98,7 @@
 
 @media screen and (max-width: 800px) {
     #menu {
-        position: relative
+        position: relative;
     }
     #menu ul {
         background: #111;
@@ -108,7 +108,7 @@
         left: 0;
         z-index: 3;
         height: auto;
-        display: none
+        display: none;
     }
     #menu ul.sub-menus {
         width: 100%;
@@ -127,18 +127,18 @@
         position: absolute;
         top: 0;
         left: 0;
-        display: block
+        display: block;
     }
     #menu input {
-        z-index: 4
+        z-index: 4;
     }
     #menu input:checked+label {
-        color: white
+        color: white;
     }
     #menu input:checked+label:before {
-        content: "\00d7"
+        content: "\00d7";
     }
     #menu input:checked~ul {
-        display: block
+        display: block;
     }
 }
