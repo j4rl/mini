@@ -28,6 +28,7 @@ $db="";
 $conn=mysqli_connect($host,$user,$pass,$db) or die(mysqli_error); */
 
 function checklogin($usr, $pass){
+    global $strMessLoginSuccess, $strMessUnknown, $strMessLoginFail;
     $dbobj=new db('dbsdata');
     $strQuery="SELECT * FROM tblUser WHERE username='$usr' AND password='$pass';";  
     if($result=$dbobj->runQuery($strQuery)){ //Was it possible to question the database for this?
@@ -65,6 +66,7 @@ function isLevel($lvl){
 }
 
 function getRealName($id){
+    global $strMessUsernameFail, $strMessWrongID;
     if(isset($id)){
         $tempDB=new db('dbsdata');
         $sql="SELECT * FROM tblUser WHERE userID=$id";

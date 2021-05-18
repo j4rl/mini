@@ -77,7 +77,7 @@
         <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="<?=$placeholderRealname?>">
         <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="<?=$placeholderUsername?>">
         <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="<?=$placeholderPassword?>">
-        <label for="lstUserlevel"><?=$strUserLevel?></label>
+        <label for="lstUserlevel"><?=$strUserlevel?></label>
             <select id="lstUserlevel" name="lstUserlevel" size="3">
                 <option value="10" selected><?=$strUser?></option>
                 <?php if(isLevel(110)){ ?><option value="100"><?=$strExtended?></option><?php } ?>
