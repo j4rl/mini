@@ -17,9 +17,31 @@ $strAbout="About";
 $placeholderHeader="Header";
 $strBtnNewBlog="Add blog!";
 $strEditBlog="Ok";
+$strByLinePrefix="- by ";
+//------------------------------------ User admin
+$strBtnEditUser="Ok";
+$strBtnNewUser="Add user!";
+$strAddUser="Add user";
+$placeholderRealname="Full Name";
+$placeholderUsername="Username";
+$placeholderPassword="Password";
+$strUserlevel="User level:";
+//-------------------------------- funcfile
+$strMessLoginFail="Could not log in.";
+$strMessLoginSuccess="Logged in.";
+$strMessUnknown="Unknown error!";
+//------------------------------------
+$strMessWrongID="Wrong ID!";
+$strMessUsernameFail="Error getting username.";
 
 
+$strLogout="Log out";
+$strLogin="Log in";
+$strMessDoLogin="Not logged in, please log in again.";
 
-
+$strAdmin="Admin";
+$strExtended="Extended user";
+$strUser="Normal user";
+$strErrUser="User level makes no sense!";
 
 ?>
