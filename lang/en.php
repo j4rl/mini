@@ -12,11 +12,12 @@ $strAdmin="Admin";
 $strUserAdmin="Users";
 $strBlogAdmin="Blog";
 $strAbout="About";
+$strProfile="Profile";
 
 //------------------------------------ Blog Admin
 $placeholderHeader="Header";
 $strBtnNewBlog="Add blog!";
-$strEditBlog="Ok";
+$strBtnEditBlog="Ok";
 $strByLinePrefix="- by ";
 //------------------------------------ User admin
 $strBtnEditUser="Ok";

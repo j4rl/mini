@@ -10,6 +10,9 @@
       </ul>
     </li>
     <?php } ?>
+    <?php if(isLevel(10)){ ?>
+    <li><a href='profile.php'><?=$strProfile?></a></li>
+    <?php } ?>
     <li><a href='about.php'><?=$strAbout?></a></li>
   </ul>
 </nav>

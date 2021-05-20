@@ -92,6 +92,7 @@
   </script>
   <div class="bladminBottomBox">
         <input type="text" name="txtAuthor" id="txtAuthor" value="<?=getRealName($row['author']);?>" autocomplete="off" readonly>
+        <input type="hidden" name="intAuthor" value="<?=$row['author']?>">
         <input type="text" name="txtAdded" id="txtAdded" value="<?=$row['added'];?>" autocomplete="off" readonly>
         <input type="hidden" name="blogID" value="<?=$row['blogID']?>">
         <button type="submit" name="btnEditBlog" value="."><?=$strBtnEditBlog?></button>

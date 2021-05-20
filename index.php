@@ -20,32 +20,14 @@
 <div class="userinfo">
     <?=showLoginStatus()?>
 </div>
-<nav id='menu'>
-  <input type='checkbox' id='responsive-menu'><label></label>
-  <ul>
-    <li><a href='index.php'>Home</a></li>
-    <?php if(isLevel(100)){ ?>
-    <li><a>Admin</a>
-      <ul class='sub-menus'>
-        <li><a href='usadmin.php'>Users</a></li>
-        <li><a href='bladmin.php'>Blogg</a></li>
-      </ul>
-    </li>
-    <?php } ?>
-    <li><a href='about.php'>About</a></li>
-  </ul>
-</nav>
+<?php require_once 'menu.php'; ?>
     <div class="content">
-    <?php     if(isset($_POST['login'])){
-        echo checklogin($_POST['username'],$_POST['password'], $db);
-    }else{ ?>
     <?php if(!isLevel(10)){ ?>
-    <form method="post" action="index.php" name="frmLogin" autocomplete="off">
+    <form method="post" action="login.php" name="frmLogin" autocomplete="off">
         <input type="text" name="username" placeholder="Användarnamn" required autocomplete="off">
         <input type="password" onblur="this.setAttribute('readonly', 'readonly');" onfocus="this.removeAttribute('readonly');" readonly name="password" required autocomplete="off" placeholder="Lösenord">
         <button type="submit" name="login" value=".">Logga in</button>
     </form><?php } ?>
-<?php } ?>
     <?php 
     $sql="SELECT * FROM tblblog ORDER BY added DESC LIMIT 3";
     $result=mysqli_query($conn, $sql);
