@@ -18,7 +18,19 @@ function runQuery($conntmp, $sqlStr){
     };
 }
 
-
+function isLoggedIn(){
+    if(isset($_SESSION['level'])){
+            if(intval($_SESSION['level'])>=10){
+            return true;
+        }else{
+            return false;
+            header("Location:logout.php");
+        }
+    }else{
+        return false;
+        header("Location:logout.php");
+    }
+}
 
 
 /* $host="localhost";
