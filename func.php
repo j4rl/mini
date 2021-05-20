@@ -19,7 +19,11 @@ function runQuery($conntmp, $sqlStr){
 }
 
 
-
+function isLoggedIn(){
+    if(!isLevel(10)){
+        header("Location:logout.php");
+    }
+}
 
 /* $host="localhost";
 $user="root";
