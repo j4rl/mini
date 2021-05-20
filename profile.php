@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php 
     require_once 'func.php'; 
-    $check=isLoggedIn();
+    if(isLoggedIn()){
+        $result=runQuery(connect('dbsdata'), "SELECT * FROM tbluser WHERE userID=".$_SESSION['id']);
+        $row=mysqli_fetch_assoc($result);
+    }
+    
+    
 ?>
 <html>
 <head>
@@ -18,8 +23,25 @@
     </div>
 <?php require_once 'menu.php'; ?>
 <div class="content">
-    <?php if(!isLevel(10)){ ?>
+    <?php if(isLevel(10)){ ?>
+        <div class="box">
+            <div class="rname"><?=$row['realname']?></div>
+            <div class="uname"><?=$row['username']?></div>
+            <div class="ulevel"><?=$row['userlevel']?></div>
+        </div> 
+        <div class="blogsByMe">
+        <?php  
+                if(isLoggedIn()){
+                    $result=runQuery(connect('dbsdata'), "SELECT * FROM tblblog WHERE author=".$_SESSION['id']);
+                    while($row=mysqli_fetch_assoc($result)){ ?>
+                        <div class="myBlog"><?=$row['header']?></div>
 
+
+                   <?php };
+                }
+                
+        ?>
+        </div>
     <?php } ?>
 </div>    
 </body>
