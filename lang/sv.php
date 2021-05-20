@@ -12,6 +12,7 @@ $strAdmin="Admin";
 $strUserAdmin="Användare";
 $strBlogAdmin="Blogg";
 $strAbout="Om";
+$strProfile="Profil";
 
 //------------------------------------ Blog Admin
 $placeholderHeader="Rubrik";
