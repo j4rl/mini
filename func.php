@@ -18,6 +18,7 @@ function runQuery($conntmp, $sqlStr){
     };
 }
 
+<<<<<<< HEAD
 function isLoggedIn(){
     if(isset($_SESSION['level'])){
             if(intval($_SESSION['level'])>=10){
@@ -32,6 +33,14 @@ function isLoggedIn(){
     }
 }
 
+=======
+
+function isLoggedIn(){
+    if(!isLevel(10)){
+        header("Location:logout.php");
+    }
+}
+>>>>>>> 2683aa13f75d81c89c5969694de69488b5c2b32f
 
 /* $host="localhost";
 $user="root";
