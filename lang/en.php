@@ -2,6 +2,8 @@
 
 //----------------------------------- Home Page
 $strHomeTitle="Mini blog";
+$strBtnComment="Comment";
+$strCommentPlaceholder="Enter comment";
 
 
 

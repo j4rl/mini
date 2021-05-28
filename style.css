@@ -33,34 +33,51 @@
 }
 
 details>summary {
-    list-style-type: none;
+    --list-style-type: none;
     font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-size: .8rem;
 }
 
 details>summary::-webkit-details-marker {
     display: none;
 }
 
+
+/*
 details>summary::before {
-    content: '➕';
+    content: 'i';
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+    border-radius: 999px;
+    font-family: serif;
+    background: var(--clr-accent);
+    color: var(--clr-light-text);
     padding: 3px;
 }
 
 details[open]>summary::before {
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+    border-radius: 999px;
+    font-family: serif;
+    background: var(--clr-light-text);
+    color: var(--clr-accent);
     padding: 3px;
-    content: '➖';
+    content: 'i';
 }
+*/
 
 details {
     margin: 0.5rem;
+    margin-left: 2rem;
     transition: all .2s ease-in-out;
 }
 
 details[open] {
     background: var(--bg-middle-lighter);
-    padding-bottom: 1rem;
+    padding-bottom: .2rem;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-left: 0px solid var(--clr-border);
@@ -69,14 +86,14 @@ details[open] {
 }
 
 details[open]>summary {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     border: 0px solid var(--clr-border);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
 .txtBox {
-    padding: 1rem;
+    padding-left: 1rem;
 }
 
 summary {
@@ -91,7 +108,9 @@ summary {
 
 h1 {
     font-family: sans-serif;
-    letter-spacing: .1rem;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: -0.06em;
     color: var(--clr-accent);
 }
 
@@ -209,4 +228,8 @@ h3 {
     background: var(--clr-accent);
     color: var(--clr-light-text);
     float: right;
+}
+
+.frmComment {
+    width: 100%;
 }

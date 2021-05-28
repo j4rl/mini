@@ -2,7 +2,8 @@
 
 //----------------------------------- Home Page
 $strHomeTitle="Miniblogg";
-
+$strBtnComment="Kommentera";
+$strCommentPlaceholder="Skriv kommentar";
 
 
 

@@ -92,3 +92,21 @@ form[name='frmLogin']>button {
     padding-right: 1rem;
     grid-area: b;
 }
+
+form[name='frmComment'] {
+    display: flex;
+    flex-direction: row;
+    margin: .1rem;
+    padding: .1rem;
+    background: var(--bg-middle);
+    width: 100%;
+}
+
+form[name='frmComment']>input {
+    flex-grow: 100;
+}
+
+form[name='frmComment']>input {
+    width: 3rem;
+    padding: .3rem;
+}
