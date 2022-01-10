@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="test.html">
+        <input type="text" name="text" placeholder="Skriv nåt!">
+        <input type="submit" name="submit" value="Skicka">
+    </form>
+    <script>
+        function getFormData() {
+            var form = document.getElementById("form");
+            var data = {};
+            for (var i = 0; i < form.elements.length; i++) {
+                var input = form.elements[i];
+                if (input.type == "text") {
+                    data[input.name] = input.value;
+                }
+            }
+            return data;
+        }
+        function sendFormData() {
+            var data = getFormData();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "test.html");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(data));
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response);
+                }
+            }
+        }
+        document.getElementById("form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            sendFormData();
+        });
+        document.write(JSON.stringify(getFormData()));
+
+
+        
+
+           </script>
+</body>
+</html>

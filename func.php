@@ -153,4 +153,14 @@ class db {
 
 }
 
+  //using countWords function, make a function that returns a specific number of words in a stringArray
+    function countWords($str, $numWords){
+        $strArray=explode(" ",$str);
+        $strRet="";
+        for($i=0;$i<$numWords;$i++){
+            $strRet=$strRet.$strArray[$i]." ";
+        }
+        return $strRet;
+    }
+
 ?>
