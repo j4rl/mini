@@ -48,7 +48,7 @@
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-    <script src="https://cdn.tiny.cloud/1/srexkpzekefu66apyfw5nysikbwmyg6izx8lei0wre50s16e/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/u2cxn1qvd0jif3rld6d4depkcjjw8vu3rjb8scmprd72zkoh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <div class="userinfo">

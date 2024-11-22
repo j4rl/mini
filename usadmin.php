@@ -74,10 +74,13 @@
 <details>
 <summary><?=$strAddUser?></summary>      
     <form method="post" action="usadmin.php" name="usadmin">
+        <label for="txtRealName" title="<?=$placeholderRealname?>"></label>
         <input type="text" name="txtRealname" id="txtRealname" required autocomplete="off" placeholder="<?=$placeholderRealname?>">
+        <label for="txtUsername" title="<?=$placeholderUsername?>"></label>
         <input type="text" name="txtUsername" id="txtUsername" required autocomplete="off" placeholder="<?=$placeholderUsername?>">
+        <label for="txtPassword" title="<?=$placeholderPassword?>"></label>
         <input type="text" name="txtPassword" id="txtPassword" required autocomplete="off" placeholder="<?=$placeholderPassword?>">
-        <label for="lstUserlevel"><?=$strUserlevel?></label>
+        <p><?=$strUserlevel?></p>
             <select id="lstUserlevel" name="lstUserlevel" size="3">
                 <option value="10" selected><?=$strUser?></option>
                 <?php if(isLevel(110)){ ?><option value="100"><?=$strExtended?></option><?php } ?>
